@@ -49,7 +49,7 @@
     (re-matches #"[a-zA-z*+!\-_?][a-zA-z0-9*+!\-_?]*(\.[a-zA-z0-9*+!\-_?]+)*" name-str)))
 
 
-(defn valid-symbol-FQName?
+(defn valid-symbol-fqname?
   "A symbol string, begins with a non-numeric character 
   and can contain alphanumeric characters and *, +, !, -, _, and ?.
    '/' has special meaning, it can be used once in the middle of a 

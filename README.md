@@ -11,7 +11,7 @@ Three predicate functions that test for compliance:
 
 (valid-class-or-namespace-name? "xyz.uvw") => true
 
-(valid-symbol-FQName? "xyz.uvw/abc") => true
+(valid-symbol-fqname? "xyz.uvw/abc") => true
 
 See the test file for more extensive scenarios.
 
