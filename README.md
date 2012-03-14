@@ -6,17 +6,17 @@ Set of predicate functions to validate conformance of the identifiers used in sy
 
 Three predicate functions that test for compliance:
 
-(valid-symbol-name? "abc") => true
-(valid-class-or-namespace-name? "abc") => true
-(valid-symbol-fqname? "abc") => true
+	(valid-symbol-name? "abc") => true
+	(valid-class-or-namespace-name? "abc") => true
+	(valid-symbol-fqname? "abc") => true
 
-(valid-symbol-name? "xyz.uvw") => false
-(valid-class-or-namespace-name? "xyz.uvw") => true
-(valid-symbol-fqname? "xyz.uvw") => true
+	(valid-symbol-name? "xyz.uvw") => false
+	(valid-class-or-namespace-name? "xyz.uvw") => true
+	(valid-symbol-fqname? "xyz.uvw") => true
 
-(valid-symbol-name? "xyz.uvw/abc") => false
-(valid-class-or-namespace-name? "xyz.uvw/abc") => false
-(valid-symbol-fqname? "xyz.uvw/abc") => true
+	(valid-symbol-name? "xyz.uvw/abc") => false
+	(valid-class-or-namespace-name? "xyz.uvw/abc") => false
+	(valid-symbol-fqname? "xyz.uvw/abc") => true
 
 See the cljvalidate/test/core.clj file for more extensive scenarios.
 
@@ -33,7 +33,16 @@ Also, the restriction on class names seems much stricter than Java's, which coul
 A simple validation test of all identifiers used in all the namespaces in clojure.core yields:
 
 	user=> (cljvalidate.core/ns-non-compliant-fqns)
-	("cljsh.utils/cljsh.utils.proxy$java.lang.InheritableThreadLocal$0" "clojure.core/*'" "clojure.core/+'" "clojure.core/-'" "clojure.core/->" "clojure.core/->>" "clojure.core/->ArrayChunk" "clojure.core/->Vec" "clojure.core/->VecNode" "clojure.core/->VecSeq" "clojure.core/.." "clojure.core//" "clojure.core/<" "clojure.core/<=" "clojure.core/=" "clojure.core/==" "clojure.core/>" "clojure.core/>0?" "clojure.core/>1?" "clojure.core/>=" "clojure.core/dec'" "clojure.core/inc'" "clojure.core/not=" "clojure.core/prim->class" "clojure.java.io/inputstream->reader" "clojure.java.io/outputstream->writer" "clojure.lang.Compiler$CompilerException" "java.lang.Thread$State" "java.lang.Thread$UncaughtExceptionHandler")
+	("cljsh.utils/cljsh.utils.proxy$java.lang.InheritableThreadLocal$0" "clojure.core/*'" 
+	"clojure.core/+'" "clojure.core/-'" "clojure.core/->" "clojure.core/->>" 
+	"clojure.core/->ArrayChunk" "clojure.core/->Vec" "clojure.core/->VecNode" 
+	"clojure.core/->VecSeq" "clojure.core/.." "clojure.core//" "clojure.core/<"
+	"clojure.core/<=" "clojure.core/=" "clojure.core/==" "clojure.core/>" 
+	"clojure.core/>0?" "clojure.core/>1?" "clojure.core/>=" "clojure.core/dec'"
+	"clojure.core/inc'" "clojure.core/not=" "clojure.core/prim->class" 
+	"clojure.java.io/inputstream->reader" "clojure.java.io/outputstream->writer" 
+	"clojure.lang.Compiler$CompilerException" "java.lang.Thread$State" 
+	"java.lang.Thread$UncaughtExceptionHandler")
 	
 shows that clojure.core does use the following chars that are disallowed for mere mortals: "=", "<", ">", "'"(not at start of identifier), ".." , "/" (as expected), and $ in classnames.
 
