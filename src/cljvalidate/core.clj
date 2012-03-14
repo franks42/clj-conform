@@ -22,14 +22,20 @@
   ending with '.' are reserved by Clojure. Symbols containing / or . 
   are said to be 'qualified'. Symbols beginning or ending with ':' 
   are reserved by Clojure. A symbol can contain one or more 
-  non-repeating ':'s.
+  non-repeating ':'s."
+  (:require [clojure.set]))
   
-  ")
-
-(require 'clojure.set)
-
+  
 (defn fqname 
-  ""
+  "Returns the FQN-string representation for a 
+  string/symbol/keyword/namespace/class/var.
+  For example:
+  'abc/def => \"abc/def\"
+  :abc/def => \"abc/def\"
+  #'abc/def => \"abc/def\"
+  #'map => \"clojure.core/map\"
+  #<Namespace clojure.core> => \"clojure.core\"
+  clojure.lang.Var => \"clojure.lang.Var\""
   [e]
   (cond (class? e) (.getName e)
         (= (type e) clojure.lang.Namespace) (str e)
@@ -37,6 +43,7 @@
         (keyword? e) (if (namespace e) (str (namespace e) "/" (name e)) (name e))
         (symbol? e) (str e)
         (var? e) (str (.ns e) "/" (str (.sym e)))))
+
 
 (defn valid-symbol-name?
   "A symbol string, begins with a non-numeric character 
@@ -78,6 +85,7 @@
       ;; either unqualified name or qualified class/namespace
       (or (valid-symbol-name? name-symb)
           (valid-class-or-namespace-name? name-symb)))))
+
 
 (defn ns-non-compliant-fqns 
   "Iterate over all the ns-map of all-ns to see which identifiers do not validate valid-symbol-fqname?, and return a sorted list of those."
