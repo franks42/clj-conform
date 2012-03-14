@@ -26,6 +26,18 @@
   
   ")
 
+(require 'clojure.set)
+
+(defn fqname 
+  ""
+  [e]
+  (cond (class? e) (.getName e)
+        (= (type e) clojure.lang.Namespace) (str e)
+        (string? e) e
+        (keyword? e) (if (namespace e) (str (namespace e) "/" (name e)) (name e))
+        (symbol? e) (str e)
+        (var? e) (str (.ns e) "/" (str (.sym e)))))
+
 (defn valid-symbol-name?
   "A symbol string, begins with a non-numeric character 
   and can contain alphanumeric characters and *, +, !, -, _, and ?.
@@ -54,7 +66,7 @@
   and can contain alphanumeric characters and *, +, !, -, _, and ?.
    '/' has special meaning, it can be used once in the middle of a 
    symbol to separate the namespace from the name, e.g. my-namespace/foo.
-   So a FQN can either be a namespace, class or ns/name.
+   So a FQN can either be a name, namespace, class or ns/name.
   (see \"http://clojure.org/reader\" for details)."
   [n]
   (when-let [name-symb (cond (string? n) (symbol n)
@@ -67,3 +79,14 @@
       (or (valid-symbol-name? name-symb)
           (valid-class-or-namespace-name? name-symb)))))
 
+(defn ns-non-compliant-fqns 
+  "Iterate over all the ns-map of all-ns to see which identifiers do not validate valid-symbol-fqname?, and return a sorted list of those."
+  []
+  (sort 
+    (clojure.set/select 
+      #(not (valid-symbol-fqname? %)) 
+      (set 
+        (map fqname 
+             (set (flatten 
+               (map vals 
+                    (map ns-map (all-ns))))))))))
