@@ -26,8 +26,7 @@ These validation functions are not official nor endorsed by clojure-core, and wi
 
 (arguably/hopefully, some form of validation functions make their way into the clojure.core code-base to provide an easier, officially sanctioned mechanism for defensive programming and compliance testing...)
 
-There is some ambiguity about ":", whether it can be part of a symbol or not (?). (requires too much regex-gymnastics to scan for right now...)
-
+There is some ambiguity about ":", whether it can be part of a symbol or not (?). 
 Also, the restriction on class names seems much stricter than Java's, which could "officially" exclude you from importing java classes which identifiers include arbitrary unicode chars and such. 
 
 A simple validation test of all identifiers used in all the namespaces in clojure.core yields:
