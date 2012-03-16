@@ -6,7 +6,7 @@
 ;; the terms of this license.
 ;; You must not remove this notice, or any other, from this software.
 
-(ns cljvalidate.core
+(ns clj-validate
   "Set of functions to check/validate symbol-names for compliance with 
   \"official\" spec at \"http://clojure.org/reader\", which reads:
   
@@ -88,7 +88,9 @@
 
 
 (defn ns-non-compliant-fqns 
-  "Iterate over all the ns-map of all-ns to see which identifiers do not validate valid-symbol-fqname?, and return a sorted list of those."
+  "Iterate over all the ns-map of all-ns to see which identifiers 
+  do not validate valid-symbol-fqname?, and return a sorted list 
+  of those."
   []
   (sort 
     (clojure.set/select 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html><head><link href="css/default.css" rel="stylesheet" type="text/css"><script src="js/jquery.min.js" type="text/javascript"></script><script src="js/page_effects.js" type="text/javascript"></script><title>clj-validate documentation</title></head><body><div id="header"><h1><a href="index.html">Clj-validate 1.0.0-SNAPSHOT API documentation</a></h1></div><div class="sidebar" id="namespaces"><h3>Namespaces</h3><ul><li class="current"><a href="clj-validate.html"><span>clj-validate</span></a></li></ul></div><div class="sidebar" id="vars"><h3>Public Vars</h3><ul><li><a href="clj-validate.html#var-fqname"><span>fqname</span></a></li><li><a href="clj-validate.html#var-ns-non-compliant-fqns"><span>ns-non-compliant-fqns</span></a></li><li><a href="clj-validate.html#var-valid-class-or-namespace-name%3F"><span>valid-class-or-namespace-name?</span></a></li><li><a href="clj-validate.html#var-valid-symbol-fqname%3F"><span>valid-symbol-fqname?</span></a></li><li><a href="clj-validate.html#var-valid-symbol-name%3F"><span>valid-symbol-name?</span></a></li></ul></div><div class="namespace-docs" id="content"><h2>clj-validate documentation</h2><pre class="doc">Set of functions to check/validate symbol-names for compliance with 
+&quot;official&quot; spec at &quot;http://clojure.org/reader&quot;, which reads:
+
+Symbols begin with a non-numeric character and can contain 
+alphanumeric characters and *, +, !, -, _, and ? (other characters
+will be allowed eventually, but not all macro characters have been 
+determined). '/' has special meaning, it can be used once in the
+middle of a symbol to separate the namespace from the name, e.g. 
+my-namespace/foo. '/' by itself names the division function. '.' 
+has special meaning - it can be used one or more times in the middle
+of a symbol to designate a fully-qualified class name, 
+e.g. java.util.BitSet, or in namespace names. Symbols beginning or 
+ending with '.' are reserved by Clojure. Symbols containing / or . 
+are said to be 'qualified'. Symbols beginning or ending with ':' 
+are reserved by Clojure. A symbol can contain one or more 
+non-repeating ':'s.</pre><div class="public" id="var-fqname"><h3>fqname</h3><div class="usage"><code>(fqname e)</code></div><pre class="doc">Returns the FQN-string representation for a 
+string/symbol/keyword/namespace/class/var.
+For example:
+'abc/def =&gt; &quot;abc/def&quot;
+:abc/def =&gt; &quot;abc/def&quot;
+#'abc/def =&gt; &quot;abc/def&quot;
+#'map =&gt; &quot;clojure.core/map&quot;
+#&lt;Namespace clojure.core&gt; =&gt; &quot;clojure.core&quot;
+clojure.lang.Var =&gt; &quot;clojure.lang.Var&quot;</pre></div><div class="public" id="var-ns-non-compliant-fqns"><h3>ns-non-compliant-fqns</h3><div class="usage"><code>(ns-non-compliant-fqns)</code></div><pre class="doc">Iterate over all the ns-map of all-ns to see which identifiers 
+do not validate valid-symbol-fqname?, and return a sorted list 
+of those.</pre></div><div class="public" id="var-valid-class-or-namespace-name%3F"><h3>valid-class-or-namespace-name?</h3><div class="usage"><code>(valid-class-or-namespace-name? n)</code></div><pre class="doc">A class or namespace, begins with a non-numeric character 
+and can contain alphanumeric characters and *, +, !, -, _, and ?.
+'.' has special meaning - it can be used one or more times in the 
+middle of a symbol to designate a fully-qualified class name
+, e.g. java.util.BitSet, or in namespace names. 
+(see &quot;http://clojure.org/reader&quot; for details).</pre></div><div class="public" id="var-valid-symbol-fqname%3F"><h3>valid-symbol-fqname?</h3><div class="usage"><code>(valid-symbol-fqname? n)</code></div><pre class="doc">A symbol string, begins with a non-numeric character 
+and can contain alphanumeric characters and *, +, !, -, _, and ?.
+ '/' has special meaning, it can be used once in the middle of a 
+ symbol to separate the namespace from the name, e.g. my-namespace/foo.
+ So a FQN can either be a name, namespace, class or ns/name.
+(see &quot;http://clojure.org/reader&quot; for details).</pre></div><div class="public" id="var-valid-symbol-name%3F"><h3>valid-symbol-name?</h3><div class="usage"><code>(valid-symbol-name? n)</code></div><pre class="doc">A symbol string, begins with a non-numeric character 
+and can contain alphanumeric characters and *, +, !, -, _, and ?.
+(see &quot;http://clojure.org/reader&quot; for details).</pre></div></div></body></html>

@@ -1,3 +1,5 @@
-(defproject cljvalidate "1.0.0-SNAPSHOT"
+(defproject clj-validate "1.0.0-SNAPSHOT"
   :description "Set of predicate functions to validate strings/symbols for conformance to spec at \"http://clojure.org/reader\"."
-  :dependencies [[org.clojure/clojure "1.3.0"]])
+  :dependencies [[org.clojure/clojure "1.3.0"]]
+	:dev-dependencies [ [lein-marginalia "0.6.0"]
+	                    [codox "0.5.0"]])
