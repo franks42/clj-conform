@@ -6,8 +6,8 @@
 ;; the terms of this license.
 ;; You must not remove this notice, or any other, from this software.
 
-(ns clj-validate.test.core
-  (:use [clj-validate])
+(ns clj-conform.test.core
+  (:use [clj-conform])
   (:use [clojure.test]))
 
 (deftest valid-symbol-name ;; 

@@ -1,4 +1,4 @@
-# clj-validate
+# clj-conform
 
 Set of predicate functions to validate conformance of the identifiers used in symbols/keywords to the spec at "http://clojure.org/reader".
 
@@ -18,7 +18,7 @@ Three predicate functions that test for compliance:
 	(valid-class-or-namespace-name? "xyz.uvw/abc") => false
 	(valid-symbol-fqname? "xyz.uvw/abc") => true
 
-See the clj-validate/test/core.clj file for more extensive scenarios.
+See the clj_conform/test/core.clj file for more extensive scenarios.
 
 ## Caveats
 
@@ -31,7 +31,7 @@ Also, the restriction on class names seems much stricter than Java's, which coul
 
 A simple validation test of all identifiers used in all the namespaces in clojure.core yields:
 
-	user=> (clj-validate/ns-non-compliant-fqns)
+	user=> (clj-conform/ns-non-compliant-fqns)
 	("cljsh.utils/cljsh.utils.proxy$java.lang.InheritableThreadLocal$0" "clojure.core/*'" 
 	"clojure.core/+'" "clojure.core/-'" "clojure.core/->" "clojure.core/->>" 
 	"clojure.core/->ArrayChunk" "clojure.core/->Vec" "clojure.core/->VecNode" 

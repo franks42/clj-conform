@@ -6,7 +6,7 @@
 ;; the terms of this license.
 ;; You must not remove this notice, or any other, from this software.
 
-(ns clj-validate
+(ns clj-conform
   "Set of functions to check/validate symbol-names for compliance with 
   \"official\" spec at \"http://clojure.org/reader\", which reads:
   
